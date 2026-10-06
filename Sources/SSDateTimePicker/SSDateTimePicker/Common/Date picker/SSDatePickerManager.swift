@@ -102,7 +102,8 @@ final class SSDatePickerManager: ObservableObject, DatePickerConfigurationDirect
 
     /// Checks if a given month is currently selected in the date picker.
     func isSelected(_ month: String) -> Bool {
-        month.lowercased() == (selectedDate ?? currentMonth).fullMonth.lowercased()
+        let date = selectedDate ?? currentMonth
+        return month.lowercased() == date.fullMonth.lowercased() && date.year(calendar) == currentMonth.year(calendar)
     }
     
     /// Checks if a given year is currently selected in the date picker.
